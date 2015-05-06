@@ -13,3 +13,4 @@ end
 safely_require '../lib/unit'
 safely_require '../lib/footman'
 safely_require '../lib/barracks'
+safely_require '../lib/peasant'
