@@ -21,7 +21,7 @@ class Unit
 
   def attack!(enemy)
     raise ErrorGame.new("test string") , 'Dead units cannot attack' if dead?
-    enemy.damage(3)
+    enemy.damage(@attack_power)
   end
 
   def damage(attack_power)

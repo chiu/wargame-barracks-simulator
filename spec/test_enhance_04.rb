@@ -8,13 +8,11 @@ describe Barracks do
     @barracks = Barracks.new
   end
 
-  it "starts off with 1000 gold resources" do
-    expect(@barracks.gold).to eq(1000)
+  it "starts off with 500 lumber" do
+    expect(@barracks.lumber).to eq(500)
   end
 
-  it "starts off with 80 food resources" do
-    expect(@barracks.food).to eq(80)
-  end
+
 
 
 

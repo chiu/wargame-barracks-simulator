@@ -7,8 +7,8 @@ require_relative 'spec_helper'
 describe Unit do
 
   before :each do
-    @unit = Unit.new(10,50)
-    @enemy = Unit.new(4,40)
+    @unit = Unit.new(100,10)
+    @enemy = Unit.new(100,10)
   end
 
   describe "#can units die? " do
@@ -18,9 +18,18 @@ describe Unit do
      expect(@unit.dead?).to be_truthy
    end
 
-     it "expect to not be able to attack? " do
+     it "expect dead unit to not be able to attack? " do
      @unit.should_receive(:health_points).and_return(-10)
      expect { @unit.attack!(@enemy) }.to raise_error ErrorGame
+   end
+
+
+      it "expect alive unit to be able to attack just fine? " do
+     @unit.should_receive(:health_points).and_return(100)
+     #@enemy.should_receive(:health_points).and_return(50)
+  
+     @unit.attack!(@enemy)
+     expect(@enemy.health_points).to eql(90)
    end
 
 
