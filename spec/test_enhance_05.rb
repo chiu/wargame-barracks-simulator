@@ -76,23 +76,38 @@ describe SiegeEngine do
 
        #barracks_double = double("Barracks")
        #expect(@barracks).to receive(:gold).with(0)
-       expect(@barracks.can_train_siege_engine?).to be_truthy
-       expect(@barracks).to receive(:gold).with(0)
+      #@barracks.should_receive(:gold).and_return(0)
+      expect(@barracks.can_train_siege_engine?).to be_truthy
+
+       #expect(@barracks).to receive(:gold).with(0)
 
 
-      end
+     end
 
-      it "barracks knows it cannot produce a siege engine if it doesn't have enough resources" do
+     it "barracks knows it cannot produce a siege engine if it doesn't have enough gold" do
+      #@barracks.should_receive(:gold).and_return(0)
+      expect(@barracks).to receive(:gold).and_return(0)
+      expect(@barracks.can_train_siege_engine?).to be_falsey
+    end
 
-      end
+    it "barracks knows it cannot produce a siege engine if it doesn't have enough food" do
+      @barracks.should_receive(:food).and_return(0)
+      expect(@barracks.can_train_siege_engine?).to be_falsey
+    end
 
-      it "barracks can produce a siege_engine" do
-        siege_engine_trained = @barracks.train_siege_engine
-        expect(siege_engine_trained).to be_an_instance_of(SiegeEngine)
-      end
 
-      it "barracks actually use up resources" do
-        siege_engine_trained = @barracks.train_siege_engine
+    it "barracks knows it cannot produce a siege engine if it doesn't have enough lumber" do
+      @barracks.should_receive(:lumber).and_return(0)
+      expect(@barracks.can_train_siege_engine?).to be_falsey
+    end
+
+    it "barracks can produce a siege_engine" do
+      siege_engine_trained = @barracks.train_siege_engine
+      expect(siege_engine_trained).to be_an_instance_of(SiegeEngine)
+    end
+
+    it "barracks actually use up resources" do
+      siege_engine_trained = @barracks.train_siege_engine
         #expect(siege_engine_trained).to be_an_instance_of(SiegeEngine)
         BARRACKS_INITIAL_GOLD = 1000
         SIEGE_ENGINE_GOLD_COST = 200
@@ -103,6 +118,19 @@ describe SiegeEngine do
         
       end
 
+      # it "some other test" do
+      #   expect(@siege_engine).to receive(:attack_power).and_return(3)
+      #   @siege_engine.method_test
+      #   expect(@siege_engine.attack_power).to eq(99)
+
+
+      # end
+
+      # it "test again" do
+
+      #   @siege_engine.method_test
+      #   expect(@siege_engine.attack_power).to eq(99)
+      # end
 
     end
 

@@ -23,12 +23,18 @@ class SiegeEngine < Unit
   elsif enemy.class == SiegeEngine
     enemy.damage(attack_power)
   else
-     raise ErrorGame.new("test string") , 'SiegeEngine may only attack barracks or other siege engines' 
-  end
+   raise ErrorGame.new("test string") , 'SiegeEngine may only attack barracks or other siege engines' 
+ end
 end
 
 def damage(attack_power)
   @health_points = health_points - attack_power
 end
+
+
+# def method_test
+#   @attack_power = 99
+
+# end
 
 end
