@@ -5,8 +5,8 @@ require_relative 'unit'
 
 class Footman < Unit
 
-  attr_accessor  :attack_power, :damage, # :health_points
-
+  #attr_accessor  :attack_power, :damage, # :health_points
+  attr_reader :attack_power
 
   def health_points
     @health_points

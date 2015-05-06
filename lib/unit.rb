@@ -6,7 +6,7 @@
 class Unit
 
  attr_reader  :health_points
- attr_reader :attack_power
+ # attr_reader :attack_power
 
 
 
