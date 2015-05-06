@@ -1,5 +1,5 @@
 #unit.rb
-
+require_relative 'errorgame'
 
 # http://classic.battle.net/war3/human/units/footman.shtml
 
@@ -20,9 +20,8 @@ class Unit
 
 
   def attack!(enemy)
-    #enemy.damage(10)
+    raise ErrorGame.new("test string") , 'Dead units cannot attack' if dead?
     enemy.damage(3)
-
   end
 
   def damage(attack_power)
@@ -30,6 +29,13 @@ class Unit
     #@health_points = health_points - damage
     @health_points = health_points - attack_power
 
+
+
+  end
+
+
+  def dead?
+    health_points <= 0
   end
 
 

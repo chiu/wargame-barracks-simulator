@@ -5,17 +5,9 @@ require_relative 'unit'
 
 class Footman < Unit
 
-  #attr_accessor  :attack_power, :damage, # :health_points
   attr_reader :attack_power
 
-  def health_points
-    @health_points
-  end
 
-
-  def health_points=(health_points)
-    @health_points=health_points
-  end
 
   
   def initialize
@@ -27,13 +19,18 @@ class Footman < Unit
   end
 
   def attack!(enemy)
-    enemy.damage(10)
+   # puts enemy.class
+    if enemy.class != Barracks
+      enemy.damage(10)
+    else
+      enemy.damage(5)
+    end
 
   end
 
   def damage(attack_power)
-  
-    #@health_points = health_points - damage
+
+
     @health_points = health_points - attack_power
 
   end
